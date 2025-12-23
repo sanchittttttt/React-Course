@@ -1,0 +1,8 @@
+.error-container{
+    display: block;
+}
+.error-page{
+    font-size: 75px;
+    text-align: center;
+    padding-top: 25vh;
+}
