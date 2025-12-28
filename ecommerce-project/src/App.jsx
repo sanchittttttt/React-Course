@@ -3,7 +3,7 @@ import { Routes , Route } from 'react-router';
 import { HomePage } from './pages/home/HomePage';
 import { CheckoutPage } from './pages/checkout/CheckoutPage';
 import './App.css'
-import { OrdersPage } from './pages/OrdersPage';
+import { OrdersPage } from './pages/orders/OrdersPage';
 import { TrackingPage } from './pages/TrackingPage';
 import { ErrorPage } from './pages/ErrorPage';
 import { useEffect,useState } from 'react';
@@ -13,10 +13,11 @@ function App() {
 
    useEffect(
     () => {
-      axios.get('/api/cart-items?expand=product')
-        .then((response)=>{
+      const fetchAppData = async() => {
+       const response = await axios.get('/api/cart-items?expand=product')
           setCart(response.data);
-      })
+      }
+      fetchAppData();
     }
    )
 
