@@ -1,10 +1,10 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import mobileLogoWhite from "../assets/images/mobile-logo-white.png";
 import logoWhite from "../assets/images/logo-white.png";
 import "./Header.css";
 
 
-export function Header({cart}) {
+export function Header({cart = []}) {
     let totalQuantity = 0;
 
     cart.forEach((cartItem) => {
