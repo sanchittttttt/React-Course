@@ -1,7 +1,7 @@
-
 import dayjs from "dayjs";
 export function ProductDetails({orderProduct})
 {
+    
     return (
         <div className="product-details">
             <div className="product-name">
