@@ -1,4 +1,4 @@
-import { it, expect, describe, vi } from 'vitest';
+import { it, expect, describe, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';//renders components in a fake page for testing
 import userEvent from '@testing-library/user-event';//simulates user interactions
 import axios from 'axios';//make HTTP requests
@@ -7,8 +7,13 @@ import { Product } from './Product';
 vi.mock('axios');//mocking axios to prevent real HTTP requests during tests
 
 describe('Product Component', () => {
-    it('displays product details correctly', () => {
-        const product = {
+
+    let product;
+
+    let loadCart;
+
+    beforeEach(() => { //beforeEach is a test hook along with beforeAll, afterEach, afterAll
+        product = {
             id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
             image: "images/products/athletic-cotton-socks-6-pairs.jpg",
             name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
@@ -20,8 +25,10 @@ describe('Product Component', () => {
             keywords: ["socks", "sports", "apparel"]
         };
 
-        const loadCart = vi.fn();
+        loadCart = vi.fn();//mock function to simulate loading cart
+    });
 
+    it('displays product details correctly', () => {
         render(<Product product={product} loadCart={loadCart} />);
 
         expect(
@@ -42,20 +49,6 @@ describe('Product Component', () => {
     });
 
     it('adds aproduct in the cart', async () => {
-        const product = {
-            id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-            image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-            name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-            rating: {
-                stars: 4.5,
-                count: 87
-            },
-            priceCents: 1090,
-            keywords: ["socks", "sports", "apparel"]
-        };
-
-
-        const loadCart = vi.fn();
 
         render(<Product product={product} loadCart={loadCart} />);
 
