@@ -66,4 +66,15 @@ describe('Product Component', () => {
 
         expect(loadCart).toHaveBeenCalled();
     });
+
+    it('Selects quantity correctly', async () => {
+        render(<Product product={product} loadCart={loadCart} />);
+
+        const quantitySelector = screen.getByTestId('product-quantity-select');
+
+        expect(
+            quantitySelector
+        ).toHaveValue('1');
+    });
+
 });

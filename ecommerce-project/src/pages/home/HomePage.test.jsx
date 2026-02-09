@@ -1,6 +1,5 @@
 import { it, expect, describe, vi, beforeEach } from 'vitest';
 import { render, screen, within } from '@testing-library/react';//renders components in a fake page for testing
-import userEvent from '@testing-library/user-event';//simulates user interactions
 import axios from 'axios';//make HTTP requests
 import { MemoryRouter } from 'react-router-dom';//specifiacally used for routing in tests
 import { HomePage } from './HomePage';
